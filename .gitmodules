@@ -1,0 +1,6 @@
+[submodule "MySC-Server"]
+	path = MySC-Server
+	url = git@github.com:adrianparvino/MySC-Server
+[submodule "MySC-Client"]
+	path = MySC-Client
+	url = git@github.com:adrianparvino/MySC-Client
