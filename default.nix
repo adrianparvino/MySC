@@ -4,14 +4,20 @@
 let fix = f: let result = f result; in result;
 in
 pkgs.stdenv.mkDerivation {
-  name = "MySC";
+  name = "mysc";
   version = "0.1.0.0";
 
   phases = [ "installPhase" ];
 
+  installPhase = ''
+    true
+    mkdir -p $out/bin
+  '';
+#    cp ${pkgs.hpkgs.mysc-server}/bin/heroku-comment-server $out/bin/
+#    cp ${pkgs.hjspkgs.mysc-client}/index.html $out/
+#    cp ${pkgs.hjspkgs.mysc-client}/all.min.js $out/
   buildInputs = [
     pkgs.hpkgs.mysc-server
-    pkgs.hjspkgs.mysc-client
   ];
   
   meta = {

@@ -9,10 +9,10 @@
 }:
 mkDerivation {
   pname = "aeson";
-  version = "1.1.1.0";
-  sha256 = "083791ed61fd5d2ce613ba9d54dd37e598a376fab63c9df0abfaa69e802272d6";
-  revision = "2";
-  editedCabalFile = "110y578mymc373lh674xdy68h7zq55q1njmpblgyg43rh3w21g0h";
+  version = "1.1.2.0";
+  sha256 = "37488cfbf6ecf65c4d63164d760c1a0f3bcc3371a35a50e5c4a3c0fd2ffac5ff";
+  revision = "1";
+  editedCabalFile = "06acsik1qcn5r1z1y3n7iw5h8x0h3hdcjii0bq9nf9ncvc71h1d4";
   libraryHaskellDepends = [
     attoparsec base base-compat bytestring containers deepseq dlist
     ghc-prim hashable scientific tagged template-haskell text time

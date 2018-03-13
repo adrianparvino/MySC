@@ -3,8 +3,8 @@ nixpkgs: ghc: ghcjs: {
     webkitgtk = pkgs.webkitgtk216x;  
     hpkgs = pkgs.haskell.packages.${ghc}.override {
       overrides = self: super: {
-        mysc-common = self.callPackage ./MySC-Common { haskellPackages = self; };
-        mysc-server = self.callPackage ./MySC-Server { haskellPackages = self; };
+        mysc-common = self.callPackage ./mysc-common { haskellPackages = self; };
+        mysc-server = self.callPackage ./mysc-server { haskellPackages = self; };
 
         hlint = self.callPackage ./pkgs/hlint.nix {};
         jsaddle = self.callPackage ./pkgs/jsaddle.nix {};
@@ -29,8 +29,8 @@ nixpkgs: ghc: ghcjs: {
     };
     hjspkgs = pkgs.haskell.packages.${ghcjs}.override {
       overrides = self: super: {
-        mysc-common = self.callPackage ./MySC-Common { haskellPackages = self; };
-        mysc-client = self.callPackage ./MySC-Client { haskellPackages = self; };
+        mysc-common = self.callPackage ./mysc-common { haskellPackages = self; };
+        mysc-client = self.callPackage ./mysc-client { haskellPackages = self; };
 
         hlint = self.callPackage ./pkgs/hlint.nix {};
         jsaddle = self.callPackage ./pkgs/jsaddle.nix {};
