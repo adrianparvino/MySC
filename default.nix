@@ -11,14 +11,11 @@ pkgs.stdenv.mkDerivation {
 
   installPhase = ''
     true
-    mkdir -p $out/bin
+    mkdir -p $out/bin/
+    cp ${pkgs.hpkgs.mysc-server}/bin/heroku-comment-server $out/bin/
+    cp ${pkgs.hjspkgs.mysc-client}/index.html $out/
+    cp ${pkgs.hjspkgs.mysc-client}/all.min.js $out/
   '';
-#    cp ${pkgs.hpkgs.mysc-server}/bin/heroku-comment-server $out/bin/
-#    cp ${pkgs.hjspkgs.mysc-client}/index.html $out/
-#    cp ${pkgs.hjspkgs.mysc-client}/all.min.js $out/
-  buildInputs = [
-    pkgs.hpkgs.mysc-server
-  ];
   
   meta = {
     license = pkgs.stdenv.lib.licenses.gpl3;

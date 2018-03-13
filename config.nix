@@ -11,6 +11,8 @@ nixpkgs: ghc: ghcjs: {
         text = self.callPackage ./pkgs/text.nix {};
         aeson = self.callPackage ./pkgs/aeson.nix {};
         bytestring-builder = pkgs.haskell.lib.dontHaddock super.bytestring-builder;
+        nats = pkgs.haskell.lib.dontHaddock super.nats;
+
         reflex-dom-contrib = self.callPackage ./pkgs/reflex-dom-contrib.nix {};
 
         reflex-bulma = self.callPackage /home/myrl/Development/reflex-bulma {};
@@ -37,6 +39,7 @@ nixpkgs: ghc: ghcjs: {
         text = self.callPackage ./pkgs/text.nix {};
         aeson = self.callPackage ./pkgs/aeson.nix {};
         bytestring-builder = pkgs.haskell.lib.dontHaddock super.bytestring-builder;
+        nats = pkgs.haskell.lib.dontHaddock super.nats;
         reflex-dom-contrib = self.callPackage ./pkgs/reflex-dom-contrib.nix {};
 
         reflex-bulma = self.callPackage /home/myrl/Development/reflex-bulma {};
