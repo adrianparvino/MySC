@@ -4,3 +4,6 @@
 [submodule "MySC-Client"]
 	path = MySC-Client
 	url = git@github.com:adrianparvino/MySC-Client
+[submodule "MySC-Common"]
+	path = MySC-Common
+	url = git@github.com:adrianparvino/MySC-Common
