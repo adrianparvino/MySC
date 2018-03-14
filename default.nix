@@ -8,5 +8,5 @@ let static-dir = pkgs.runCommand "static-dir" {} ''
 in
 pkgs.writeScriptBin "run-mysc-server" ''
   #!${pkgs.stdenv.shell}
-  ${pkgs.hpkgs.mysc-server}/bin/mysc-server -p 8080 -d ${static-dir}/
+  exec ${pkgs.hpkgs.mysc-server}/bin/mysc-server -p 8080 -d ${static-dir}/ $@
 ''
