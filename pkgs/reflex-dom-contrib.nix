@@ -10,8 +10,8 @@ mkDerivation {
   src = fetchFromGitHub {
     owner = "reflex-frp";
     repo = "reflex-dom-contrib";
-    rev = "d3c837705ce91c0f08801c28b2355e6cf131d40e";
-    sha256 = "152cr0gnfqyhflpf7mc79jihsm02xydy913hr99qvjp67b917x50";
+    rev = "b47f90c810c838009bf69e1f8dacdcd10fe8ffe3";
+    sha256 = "0yvjnr9xfm0bg7b6q7ssdci43ca2ap3wvjhshv61dnpvh60ldsk9";
   };
   
   libraryHaskellDepends = [

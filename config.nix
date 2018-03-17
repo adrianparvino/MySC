@@ -19,14 +19,14 @@ nixpkgs: ghc: ghcjs: {
         reflex = self.callPackage (pkgs.fetchFromGitHub {
           owner = "reflex-frp";
           repo = "reflex";
-          rev = "908348b4799caec260e083568bace846d7fe5d80";
-          sha256 = "13r7sk0xj0nnzwpmdqgp5ny93pdqq3d3h9w3mj84aiy5xhiakjvm";
+          rev = "4a03273794aa4c9a9965e3e6a45fa3c68fa4659a";
+          sha256 = "0iwn5vjqk4nrxy0ihyrhxirlwbabs7dcr7wkvd0h6rw4yap7ay8p";
         }) {};
       } // (import (pkgs.fetchFromGitHub {
           owner = "reflex-frp";
           repo = "reflex-dom";
-          rev = "d7b859bccd0d9c57bd9635de75b3ca9d2ca79568";
-          sha256 = "11ljk6hpsqw0as2iaa5m3pbb4qfgz8bzdgs64c2ld1cfp09wyz2s";
+          rev = "df9fff3a0f4e393db6af0beecabd38156c82aedc";
+          sha256 = "04zb388xdiarpilr0q0b3pb34h6dycr7y0jgrb3q4zx4dbksq7br";
       }) self nixpkgs);
     };
     hjspkgs = pkgs.haskell.packages.${ghcjs}.override {
@@ -46,14 +46,14 @@ nixpkgs: ghc: ghcjs: {
         reflex = self.callPackage (pkgs.fetchFromGitHub {
           owner = "reflex-frp";
           repo = "reflex";
-          rev = "908348b4799caec260e083568bace846d7fe5d80";
-          sha256 = "13r7sk0xj0nnzwpmdqgp5ny93pdqq3d3h9w3mj84aiy5xhiakjvm";
+          rev = "4a03273794aa4c9a9965e3e6a45fa3c68fa4659a";
+          sha256 = "0iwn5vjqk4nrxy0ihyrhxirlwbabs7dcr7wkvd0h6rw4yap7ay8p";
         }) {};
       } // (import (pkgs.fetchFromGitHub {
           owner = "reflex-frp";
           repo = "reflex-dom";
-          rev = "d7b859bccd0d9c57bd9635de75b3ca9d2ca79568";
-          sha256 = "11ljk6hpsqw0as2iaa5m3pbb4qfgz8bzdgs64c2ld1cfp09wyz2s";
+          rev = "df9fff3a0f4e393db6af0beecabd38156c82aedc";
+          sha256 = "04zb388xdiarpilr0q0b3pb34h6dycr7y0jgrb3q4zx4dbksq7br";
       }) self nixpkgs);
     };
   };
