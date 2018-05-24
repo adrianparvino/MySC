@@ -1,15 +1,12 @@
-nixpkgs: ghc: ghcjs: {
+nixpkgs: ghc: ghcjs:
+{
   packageOverrides = pkgs: rec {
-    webkitgtk = pkgs.webkitgtk216x;  
-    hpkgs = pkgs.haskell.packages.${ghc}.override {
+    webkitgtk = pkgs.webkitgtk216x;
+    hpkgs = (pkgs.callPackage ./pkgs/ghc {}).override {
       overrides = self: super: {
         mysc-common = self.callPackage ./mysc-common { haskellPackages = self; };
         mysc-server = self.callPackage ./mysc-server { haskellPackages = self; };
 
-        hlint = self.callPackage ./pkgs/hlint.nix {};
-        jsaddle = self.callPackage ./pkgs/jsaddle.nix {};
-        text = self.callPackage ./pkgs/text.nix {};
-        aeson = self.callPackage ./pkgs/aeson.nix {};
         bytestring-builder = pkgs.haskell.lib.dontHaddock super.bytestring-builder;
         nats = pkgs.haskell.lib.dontHaddock super.nats;
 
@@ -29,17 +26,28 @@ nixpkgs: ghc: ghcjs: {
           sha256 = "04zb388xdiarpilr0q0b3pb34h6dycr7y0jgrb3q4zx4dbksq7br";
       }) self nixpkgs);
     };
-    hjspkgs = pkgs.haskell.packages.${ghcjs}.override {
+    hjspkgs = (pkgs.callPackage ./pkgs/ghcjs {}).override {
       overrides = self: super: {
         mysc-common = self.callPackage ./mysc-common { haskellPackages = self; };
         mysc-client = self.callPackage ./mysc-client { haskellPackages = self; };
 
-        hlint = self.callPackage ./pkgs/hlint.nix {};
-        jsaddle = self.callPackage ./pkgs/jsaddle.nix {};
-        text = self.callPackage ./pkgs/text.nix {};
-        aeson = self.callPackage ./pkgs/aeson.nix {};
+        font-awesome-type = pkgs.haskell.packages.ghcjsHEAD.font-awesome-type;
+
+        ref-tf = pkgs.haskell.packages.ghcjsHEAD.ref-tf;
+        prim-uniq = pkgs.haskell.packages.ghcjsHEAD.prim-uniq;
+        ghcjs-base = pkgs.haskell.packages.ghcjsHEAD.ghcjs-base;
+        ghcjs-dom = pkgs.haskell.packages.ghcjsHEAD.ghcjs-dom;
+        ghcjs-dom-jsffi = pkgs.haskell.packages.ghcjsHEAD.ghcjs-dom-jsffi;
+        jsaddle = pkgs.haskell.packages.ghcjsHEAD.jsaddle;
+        jsaddle-webkit2gtk = pkgs.haskell.packages.ghcjsHEAD.jsaddle-webkit2gtk;
+        jsaddle-wkwebview = pkgs.haskell.packages.ghcjsHEAD.jsaddle-wkwebview;
+        jsaddle-warp = pkgs.haskell.packages.ghcjsHEAD.jsaddle-warp;
+        jsaddle-clib = pkgs.haskell.packages.ghcjsHEAD.jsaddle-clib;
+        dependent-sum-template = pkgs.haskell.packages.ghcjsHEAD.dependent-sum-template;
+        zenc = pkgs.haskell.packages.ghcjsHEAD.zenc;
         bytestring-builder = pkgs.haskell.lib.dontHaddock super.bytestring-builder;
         nats = pkgs.haskell.lib.dontHaddock super.nats;
+
         reflex-dom-contrib = self.callPackage ./pkgs/reflex-dom-contrib.nix {};
 
         reflex-bulma = self.callPackage /home/myrl/Development/reflex-bulma {};
