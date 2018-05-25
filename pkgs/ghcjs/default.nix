@@ -15,11 +15,11 @@ let
                       inherit stdenv haskellLib extensible-self;
                     };
 
-  packageSetConfig = import <nixpkgs/pkgs/development/haskell-modules/configuration-ghcjs.nix> { inherit pkgs haskellLib; };
-  compilerConfig = import <nixpkgs/pkgs/development/haskell-modules/configuration-ghc-8.0.x.nix> { inherit pkgs haskellLib; };
+  packageSetConfig = import (pkgs.path + "/pkgs/development/haskell-modules/configuration-ghcjs.nix") { inherit pkgs haskellLib; };
+  compilerConfig = import (pkgs.path + "/pkgs/development/haskell-modules/configuration-ghc-8.0.x.nix") { inherit pkgs haskellLib; };
 
-  configurationCommon = import <nixpkgs/pkgs/development/haskell-modules/configuration-common.nix> { inherit pkgs haskellLib; };
-  configurationNix = import <nixpkgs/pkgs/development/haskell-modules/configuration-nix.nix> { inherit pkgs haskellLib; };
+  configurationCommon = import (pkgs.path + "/pkgs/development/haskell-modules/configuration-common.nix") { inherit pkgs haskellLib; };
+  configurationNix = import (pkgs.path + "/pkgs/development/haskell-modules/configuration-nix.nix") { inherit pkgs haskellLib; };
 
   extensible-self = makeExtensible (extends overrides (extends packageSetConfig (extends compilerConfig (extends configurationCommon (extends configurationNix haskellPackages)))));
 
