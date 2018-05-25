@@ -1,9 +1,9 @@
 [submodule "mysc-server"]
 	path = mysc-server
-	url = git@github.com:adrianparvino/mysc-server
+	url = https://github.com/adrianparvino/mysc-server.git
 [submodule "mysc-client"]
 	path = mysc-client
-	url = git@github.com:adrianparvino/mysc-client
+	url = https://github.com/adrianparvino/mysc-client.git
 [submodule "mysc-common"]
 	path = mysc-common
-	url = git@github.com:adrianparvino/mysc-common
+	url = https://github.com/adrianparvino/mysc-common.git
