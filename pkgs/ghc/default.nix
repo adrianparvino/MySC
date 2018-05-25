@@ -8,19 +8,19 @@ let
   inherit (lib) extends makeExtensible;
   haskellLib = pkgs.haskell.lib;
   inherit (haskellLib) makePackageSet;
-  
+
   haskellPackages = pkgs.callPackage makePackageSet {
                       ghc = buildPackages.haskell.compiler.ghc802;
                       buildHaskellPackages = buildPackages.haskell.packages.ghc802;
                       package-set = import ./packages.nix;
                       inherit stdenv haskellLib extensible-self;
                     };
-  
+
   compilerConfig = import  ./configuration-packages.nix { inherit pkgs haskellLib; };
-  
-  configurationCommon = if builtins.pathExists ./configuration-common.nix then import ./configuration-common.nix { inherit pkgs haskellLib; } else self: super: {};
-  configurationNix = import (pkgs.path + "/pkgs/development/haskell-modules/configuration-nix.nix") { inherit pkgs haskellLib; };
-  
+
+  configurationCommon = import <nixpkgs/pkgs/development/haskell-modules/configuration-common.nix> { inherit pkgs haskellLib; };
+  configurationNix = import <nixpkgs/pkgs/development/haskell-modules/configuration-nix.nix> { inherit pkgs haskellLib; };
+
   extensible-self = makeExtensible (extends overrides (extends configurationCommon (extends packageSetConfig (extends compilerConfig (extends configurationNix haskellPackages)))));
 
 in extensible-self

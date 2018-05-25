@@ -198,6 +198,33 @@ self: {
        description = "A framework for packaging Haskell software";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+  "Cabal_1_24_2_0" = callPackage
+    ({ mkDerivation, array, base, binary, bytestring, containers
+     , deepseq, directory, exceptions, filepath, old-time, pretty
+     , process, QuickCheck, regex-posix, tagged, tasty, tasty-hunit
+     , tasty-quickcheck, time, transformers, unix
+     }:
+     mkDerivation {
+       pname = "Cabal";
+       version = "1.24.2.0";
+       sha256 = "0h33v1716wkqh9wvq2wynvhwzkjjhg4aav0a1i3cmyq36n7fpl5p";
+       revision = "2";
+       editedCabalFile = "15ncrm7x2lg4hn0m5mhc8hy769bzhmajsm6l9i6536plfs2bbbdj";
+       libraryHaskellDepends = [
+         array base binary bytestring containers deepseq directory filepath
+         pretty process time unix
+       ];
+       testHaskellDepends = [
+         base bytestring containers directory exceptions filepath old-time
+         pretty process QuickCheck regex-posix tagged tasty tasty-hunit
+         tasty-quickcheck transformers unix
+       ];
+       doCheck = false;
+       homepage = "http://www.haskell.org/cabal/";
+       description = "A framework for packaging Haskell software";
+       license = stdenv.lib.licenses.bsd3;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
   "ChannelT" = callPackage
     ({ mkDerivation, base, free, mmorph, mtl, transformers-base }:
      mkDerivation {
@@ -6046,6 +6073,8 @@ self: {
        pname = "blaze-builder";
        version = "0.4.0.2";
        sha256 = "1m33y6p5xldni8p4fzg8fmsyqvkfmnimdamr1xjnsmgm3dkf9lws";
+       revision="1";
+       editedCabalFile = "1n8z1zcvrslsa9dvflx8528hsialmnljl1zzdjf1azs24xdq2npm";
        libraryHaskellDepends = [ base bytestring deepseq text ];
        testHaskellDepends = [
          base bytestring HUnit QuickCheck test-framework
@@ -7348,6 +7377,25 @@ self: {
        description = "Chase & Lev work-stealing lock-free double-ended queues (deques)";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+
+  "ChasingBottoms" = callPackage
+    ({ mkDerivation, array, base, containers, mtl, QuickCheck, random
+     , syb
+     }:
+     mkDerivation {
+       pname = "ChasingBottoms";
+       version = "1.3.1.3";
+       sha256 = "04jwwjs22mqc4hvpp4c3gpb79inrrq5sapks5khknspv2hslm61q";
+       libraryHaskellDepends = [
+         base containers mtl QuickCheck random syb
+       ];
+       testHaskellDepends = [
+         array base containers mtl QuickCheck random syb
+       ];
+       description = "For testing partial and infinite values";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
   "cheapskate" = callPackage
     ({ mkDerivation, aeson, base, blaze-html, bytestring, containers
      , data-default, http-types, mtl, syb, text, uniplate, wai
@@ -10073,6 +10121,23 @@ self: {
        description = "Dependent sum type";
        license = stdenv.lib.licenses.publicDomain;
      }) {};
+
+  "dependent-sum-template" = callPackage
+    ({ mkDerivation, base, dependent-sum, template-haskell, th-extras
+     }:
+     mkDerivation {
+       pname = "dependent-sum-template";
+       version = "0.0.0.6";
+       sha256 = "1bcipqkkgj1afi2ax726gbvp9haqghvm5016rawx3jj9364v8k4r";
+       libraryHaskellDepends = [
+         base dependent-sum template-haskell th-extras
+       ];
+       testHaskellDepends = [ base dependent-sum ];
+       homepage = "/dev/null";
+       description = "Template Haskell code to generate instances of classes in dependent-sum package";
+       license = stdenv.lib.licenses.publicDomain;
+     }) {};
+
   "derive" = callPackage
     ({ mkDerivation, base, bytestring, containers, directory, filepath
      , haskell-src-exts, pretty, process, syb, template-haskell
@@ -13263,6 +13328,17 @@ self: {
        description = "Beautiful Folding";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+  "font-awesome-type" = callPackage
+    ({ mkDerivation, base }:
+     mkDerivation {
+       pname = "font-awesome-type";
+       version = "0.1";
+       sha256 = "1njwikgrsm52diq84j6lgjcndssk3ihmgp7fndwjq9m2v2h346gh";
+       libraryHaskellDepends = [ base ];
+       homepage = "https://github.com/spl/font-awesome-type";
+       description = "A Font Awesome data type enumerating all icon classes";
+       license = stdenv.lib.licenses.bsd3;
+     }) {};
   "force-layout" = callPackage
     ({ mkDerivation, base, containers, data-default-class, lens, linear
      }:
@@ -13995,6 +14071,19 @@ self: {
        description = "GHCi based bare bones IDE";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+
+  "ghcjs-ajax" = callPackage
+    ({ mkDerivation, aeson, base, http-types, text }:
+     mkDerivation {
+       pname = "ghcjs-ajax";
+       version = "0.2.0.0";
+       sha256 = "0yf2lpd7n891i61w1g0zbmi2zv93a2jzifxdsrqj39wxhl6afpc6";
+       libraryHaskellDepends = [ aeson base http-types text ];
+       homepage = "https://github.com/agrafix/ghcjs-ajax#readme";
+       description = "Crossbrowser AJAX Bindings for GHCJS";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
   "ghcjs-base-stub" = callPackage
     ({ mkDerivation, aeson, attoparsec, base, containers, deepseq
      , ghc-prim, primitive, scientific, text, transformers
@@ -14012,6 +14101,7 @@ self: {
        description = "Allow GHCJS projects to compile under GHC and develop using intero";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+
   "ghcjs-codemirror" = callPackage
     ({ mkDerivation, base }:
      mkDerivation {
@@ -14024,6 +14114,116 @@ self: {
        description = "Installs CodeMirror JavaScript files";
        license = stdenv.lib.licenses.mit;
      }) {};
+
+  "ghcjs-dom" = callPackage
+    ({ mkDerivation, base, ghcjs-dom-jsaddle, text, transformers }:
+     mkDerivation {
+       pname = "ghcjs-dom";
+       version = "0.9.2.0";
+       sha256 = "0yhvnxrh68rc33h3m6zg6vzc4byr1yg09zfxn7g39skzn1mrj0aa";
+       libraryHaskellDepends = [
+         base ghcjs-dom-jsaddle text transformers
+       ];
+       doHaddock = false;
+       description = "DOM library that supports both GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
+  "ghcjs-dom-hello" = callPackage
+    ({ mkDerivation, base, ghcjs-dom, jsaddle, jsaddle-warp
+     , jsaddle-webkit2gtk, mtl
+     }:
+     mkDerivation {
+       pname = "ghcjs-dom-hello";
+       version = "6.0.0.0";
+       sha256 = "16f69w53a3vcfnb805nyn257465gvyv2981gsggvpkzvyqklsp74";
+       isLibrary = true;
+       isExecutable = true;
+       enableSeparateDataOutput = true;
+       libraryHaskellDepends = [
+         base ghcjs-dom jsaddle jsaddle-warp mtl
+       ];
+       executableHaskellDepends = [
+         base ghcjs-dom jsaddle-warp jsaddle-webkit2gtk mtl
+       ];
+       homepage = "https://github.com/ghcjs/ghcjs-dom-hello";
+       description = "GHCJS DOM Hello World, an example package";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "ghcjs-dom-jsaddle" = callPackage
+    ({ mkDerivation, jsaddle-dom }:
+     mkDerivation {
+       pname = "ghcjs-dom-jsaddle";
+       version = "0.9.2.0";
+       sha256 = "05ings3n2zlgnwg9a17s21yzh4pnag1cz62yyddaxbqpxn4xkj6l";
+       libraryHaskellDepends = [ jsaddle-dom ];
+       doHaddock = false;
+       description = "DOM library that supports both GHCJS and GHC using jsaddle";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
+  "ghcjs-dom-jsffi" = callPackage
+    ({ mkDerivation }:
+     mkDerivation {
+       pname = "ghcjs-dom-jsffi";
+       version = "0.9.2.0";
+       sha256 = "1xj94izrypxnb91lgsq0lfzqqs11sxbs24nkw8sn2wkmmh5pd8vd";
+       description = "DOM library using JSFFI and GHCJS";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "ghcjs-dom-webkit" = callPackage
+    ({ mkDerivation, base, glib, gtk3, text, transformers, webkitgtk3
+     }:
+     mkDerivation {
+       pname = "ghcjs-dom-webkit";
+       version = "0.3.1.0";
+       sha256 = "1w4id2iwjq6ijvwc3igflycm6gwzd06ih583nch5wh0ir23b1bjx";
+       libraryHaskellDepends = [
+         base glib gtk3 text transformers webkitgtk3
+       ];
+       description = "DOM library that supports both GHCJS and WebKitGTK";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "ghcjs-fetch" = callPackage
+    ({ mkDerivation, aeson, base, bytestring, case-insensitive
+     , ghcjs-base-stub, http-types
+     }:
+     mkDerivation {
+       pname = "ghcjs-fetch";
+       version = "0.1.0.0";
+       sha256 = "0ya6n8716likfgmm69z8q6dj4gf1w7063ni24di8xbv5ylxa0d39";
+       libraryHaskellDepends = [
+         aeson base bytestring case-insensitive ghcjs-base-stub http-types
+       ];
+       homepage = "https://github.com/cocreature/ghcjs-fetch#readme";
+       description = "GHCJS bindings for the JavaScript Fetch API";
+       license = stdenv.lib.licenses.bsd3;
+     }) {};
+
+  "ghcjs-hplay" = callPackage
+    ({ mkDerivation, base, bytestring, containers, directory
+     , ghcjs-perch, mtl, transformers, transient, transient-universe
+     }:
+     mkDerivation {
+       pname = "ghcjs-hplay";
+       version = "0.4.2";
+       sha256 = "0bfw1fyldkkcxfhhkk09dcdpgh0pr2d39cw2khycm3qnr0vlzaxb";
+       libraryHaskellDepends = [
+         base bytestring containers directory ghcjs-perch mtl transformers
+         transient transient-universe
+       ];
+       homepage = "https://github.com/transient-haskell/ghcjs-hplay";
+       description = "Client-side web EDSL for transient nodes running in the web browser";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
   "ghcjs-perch" = callPackage
     ({ mkDerivation, base, transformers }:
      mkDerivation {
@@ -14034,6 +14234,149 @@ self: {
        description = "GHCJS version of Perch library";
        license = stdenv.lib.licenses.mit;
      }) {};
+  "ghcjs-promise" = callPackage
+    ({ mkDerivation, base, ghcjs-base, protolude }:
+     mkDerivation {
+       pname = "ghcjs-promise";
+       version = "0.1.0.3";
+       sha256 = "06zq3bqcrci7zgkgphkhv5awzw75ivg6hn9avx9c4yp2c1ra3593";
+       libraryHaskellDepends = [ base ghcjs-base protolude ];
+       homepage = "https://github.com/vwwv/ghcjs-promise";
+       description = "Bidirectional bidings to javascript's promise";
+       license = stdenv.lib.licenses.bsd3;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "ghcjs-vdom" = callPackage
+    ({ mkDerivation, base, containers, ghc-prim, ghcjs-base
+     , ghcjs-ffiqq, ghcjs-prim, split, template-haskell
+     }:
+     mkDerivation {
+       pname = "ghcjs-vdom";
+       version = "0.2.0.0";
+       sha256 = "1ib8bpfd1wy847idk6308r9l9lb09vxd11152xglk6y7kyhdnlsa";
+       isLibrary = true;
+       isExecutable = true;
+       libraryHaskellDepends = [
+         base containers ghc-prim ghcjs-base ghcjs-ffiqq ghcjs-prim split
+         template-haskell
+       ];
+       description = "Virtual-dom bindings for GHCJS";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+       broken = true;
+     }) {ghcjs-ffiqq = null; ghcjs-prim = null;};
+
+  "ghcjs-websockets" = callPackage
+    ({ mkDerivation, base, base64-bytestring, binary, bytestring
+     , ghcjs-base, text
+     }:
+     mkDerivation {
+       pname = "ghcjs-websockets";
+       version = "0.3.0.5";
+       sha256 = "1km7hdpa036hqxzddwxw23zaq1sjvbmjmqdp4fzdz62azp6g4ygq";
+       revision = "1";
+       editedCabalFile = "1zxj06csvaja0mm9hszbn8p2qc76x0n21b44ciycfsy9jc3cq08r";
+       libraryHaskellDepends = [
+         base base64-bytestring binary bytestring ghcjs-base text
+       ];
+       homepage = "http://github.com/mstksg/ghcjs-websockets";
+       description = "Deprecated: use ghcjs-base's native websockets";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
+  "ghcjs-xhr" = callPackage
+    ({ mkDerivation, base, ghcjs-base, text }:
+     mkDerivation {
+       pname = "ghcjs-xhr";
+       version = "0.1.0.0";
+       sha256 = "07nra5d0hc70v23wqaivwj96lakiz34vv96m9khi5y9f5lsads0l";
+       libraryHaskellDepends = [ base ghcjs-base text ];
+       homepage = "https://github.com/tdammers/ghcjs-xhr";
+       description = "XmlHttpRequest (\"AJAX\") bindings for GHCJS";
+       license = stdenv.lib.licenses.bsd3;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "ghclive" = callPackage
+    ({ mkDerivation, aeson, base, blaze-html, blaze-markup, bytestring
+     , containers, diagrams-lib, diagrams-svg, directory, file-embed
+     , ghc-prim, hint, mtl, text, time, unix, unordered-containers
+     , vector, wai, wai-websockets, warp, websockets, yesod
+     , yesod-static
+     }:
+     mkDerivation {
+       pname = "ghclive";
+       version = "0.1.0.2";
+       sha256 = "0rnmv09sl5pj9y8hr7s8hwh23zfm4j8nsn524hpj73diwmzf5fh8";
+       isLibrary = true;
+       isExecutable = true;
+       libraryHaskellDepends = [
+         aeson base blaze-html blaze-markup containers diagrams-lib
+         diagrams-svg ghc-prim text
+       ];
+       executableHaskellDepends = [
+         aeson base blaze-html blaze-markup bytestring containers directory
+         file-embed hint mtl text time unix unordered-containers vector wai
+         wai-websockets warp websockets yesod yesod-static
+       ];
+       homepage = "http://github.com/shapr/ghclive/";
+       description = "Interactive Haskell interpreter in a browser";
+       license = stdenv.lib.licenses.bsd3;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "ghczdecode" = callPackage
+    ({ mkDerivation, base, zenc }:
+     mkDerivation {
+       pname = "ghczdecode";
+       version = "0.1.0.1";
+       sha256 = "1yn6blszccmgv0zrq5cxv6kww47j7pwgywgy7piz6is44ab5s5l9";
+       isLibrary = false;
+       isExecutable = true;
+       executableHaskellDepends = [ base zenc ];
+       homepage = "https://github.com/Peaker/ghczdecode";
+       description = "Decode Z-encoded strings from GHC";
+       license = stdenv.lib.licenses.bsd3;
+     }) {};
+
+  "ghost-buster" = callPackage
+    ({ mkDerivation, base, hspec, QuickCheck }:
+     mkDerivation {
+       pname = "ghost-buster";
+       version = "0.1.1.0";
+       sha256 = "1mpnvdb6p6hda645njnfia5j259byrs0mg2fl3syff3qww797l02";
+       libraryHaskellDepends = [ base ];
+       testHaskellDepends = [ base hspec QuickCheck ];
+       homepage = "https://github.com/Lazersmoke/ghost-buster#readme";
+       description = "Existential type utilites";
+       license = stdenv.lib.licenses.bsd3;
+     }) {};
+
+  "ght" = callPackage
+    ({ mkDerivation, base, binary, bytestring, data-default, directory
+     , filepath, iteratee, iteratee-compress, mmap, mtl, old-locale, SHA
+     , storable-endian, time, ui-command, unix, zlib
+     }:
+     mkDerivation {
+       pname = "ght";
+       version = "0.4.0.1";
+       sha256 = "03lrn3s79gxdn5fwh6cbp46k303662fnisjs7qp1yf8c66vxi8wc";
+       isLibrary = true;
+       isExecutable = true;
+       libraryHaskellDepends = [
+         base binary bytestring data-default iteratee iteratee-compress mmap
+         old-locale SHA storable-endian time
+       ];
+       executableHaskellDepends = [
+         base bytestring data-default directory filepath mtl SHA ui-command
+         unix zlib
+       ];
+       description = "Trivial routines for inspecting git repositories";
+       license = "GPL";
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
   "gi-atk" = callPackage
     ({ mkDerivation, atk, base, bytestring, Cabal, containers, gi-glib
      , gi-gobject, haskell-gi, haskell-gi-base, haskell-gi-overloading
@@ -22041,6 +22384,182 @@ self: {
        description = "Obtain minified jQuery code";
        license = stdenv.lib.licenses.mit;
      }) {};
+
+  "jsaddle" = callPackage
+    ({ mkDerivation, aeson, attoparsec, base, base64-bytestring
+     , bytestring, containers, deepseq, filepath, ghc-prim, http-types
+     , lens, primitive, process, random, ref-tf, scientific, stm, text
+     , time, transformers, unordered-containers, vector
+     }:
+     mkDerivation {
+       pname = "jsaddle";
+       version = "0.9.4.0";
+       sha256 = "0lk4cbvl2n3zcc709hjcnxw3wm1vd49dqlm12cwy9im4aif1zbq1";
+       libraryHaskellDepends = [
+         aeson attoparsec base base64-bytestring bytestring containers
+         deepseq filepath ghc-prim http-types lens primitive process random
+         ref-tf scientific stm text time transformers unordered-containers
+         vector
+       ];
+       description = "Interface for JavaScript that works with GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
+  "jsaddle-clib" = callPackage
+    ({ mkDerivation, aeson, base, bytestring, data-default, jsaddle
+     , text
+     }:
+     mkDerivation {
+       pname = "jsaddle-clib";
+       version = "0.9.0.0";
+       sha256 = "10ycmp3pnkh18d8xv44gj392h7xzfmnyl0qkfv0qx0p7pn9vn6zz";
+       libraryHaskellDepends = [
+         aeson base bytestring data-default jsaddle text
+       ];
+       description = "Interface for JavaScript that works with GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
+  "jsaddle-dom" = callPackage
+    ({ mkDerivation, base, base-compat, jsaddle, lens, text
+     , transformers
+     }:
+     mkDerivation {
+       pname = "jsaddle-dom";
+       version = "0.9.2.0";
+       sha256 = "14m752vj4lpdwa0cbziz1wynjf836f3khrmfdz702c0d0als3j0q";
+       libraryHaskellDepends = [
+         base base-compat jsaddle lens text transformers
+       ];
+       description = "DOM library that uses jsaddle to support both GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+     }) {};
+
+  "jsaddle-hello" = callPackage
+    ({ mkDerivation, base, jsaddle, lens, text }:
+     mkDerivation {
+       pname = "jsaddle-hello";
+       version = "2.0.0.0";
+       sha256 = "1bn0x8pgafdpf2ddxwinqriqdbdm9j5ca7ka3caqci1qb5sh86ll";
+       isLibrary = false;
+       isExecutable = true;
+       executableHaskellDepends = [ base jsaddle lens text ];
+       homepage = "https://github.com/ghcjs/jsaddle-hello";
+       description = "JSaddle Hello World, an example package";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "jsaddle-warp" = callPackage
+    ({ mkDerivation, aeson, base, bytestring, containers, deepseq
+     , doctest, filepath, foreign-store, ghc-prim, http-types, jsaddle
+     , lens, network, primitive, process, QuickCheck, ref-tf, stm, text
+     , time, transformers, wai, wai-websockets, warp, webdriver
+     , websockets
+     }:
+     mkDerivation {
+       pname = "jsaddle-warp";
+       version = "0.9.5.0";
+       sha256 = "18rvs0m8407piavqvv95dp4bfcgn73c22xjcb75fax0bhf0s6aak";
+       libraryHaskellDepends = [
+         aeson base bytestring containers foreign-store http-types jsaddle
+         stm text time transformers wai wai-websockets warp websockets
+       ];
+       testHaskellDepends = [
+         aeson base bytestring containers deepseq doctest filepath ghc-prim
+         http-types jsaddle lens network primitive process QuickCheck ref-tf
+         stm text time transformers wai wai-websockets warp webdriver
+         websockets
+       ];
+       description = "Interface for JavaScript that works with GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "jsaddle-webkit2gtk" = callPackage
+    ({ mkDerivation, aeson, base, bytestring, directory, gi-gio
+     , gi-glib, gi-gtk, gi-javascriptcore, gi-webkit2, haskell-gi-base
+     , haskell-gi-overloading, jsaddle, text, unix
+     , webkit2gtk3-javascriptcore
+     }:
+     mkDerivation {
+       pname = "jsaddle-webkit2gtk";
+       version = "0.9.4.0";
+       sha256 = "0mw43kmamp1spw6zfdbm76apn79n7y9inb0c1c8fkfczbjd8b759";
+       libraryHaskellDepends = [
+         aeson base bytestring directory gi-gio gi-glib gi-gtk
+         gi-javascriptcore gi-webkit2 haskell-gi-base haskell-gi-overloading
+         jsaddle text unix webkit2gtk3-javascriptcore
+       ];
+       description = "Interface for JavaScript that works with GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "jsaddle-webkitgtk" = callPackage
+    ({ mkDerivation, aeson, base, bytestring, directory, gi-glib
+     , gi-gtk, gi-javascriptcore, gi-webkit, haskell-gi-base, jsaddle
+     , text, unix, webkitgtk3-javascriptcore
+     }:
+     mkDerivation {
+       pname = "jsaddle-webkitgtk";
+       version = "0.9.0.0";
+       sha256 = "036k7ni5ki1p6f3hxkzyq2nskqxjbdg4kp9j5r2jzphp1cr8r9li";
+       libraryHaskellDepends = [
+         aeson base bytestring directory gi-glib gi-gtk gi-javascriptcore
+         gi-webkit haskell-gi-base jsaddle text unix
+         webkitgtk3-javascriptcore
+       ];
+       description = "Interface for JavaScript that works with GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "jsaddle-wkwebview" = callPackage
+    ({ mkDerivation, aeson, base, bytestring, containers, data-default
+     , jsaddle
+     }:
+     mkDerivation {
+       pname = "jsaddle-wkwebview";
+       version = "0.9.4.0";
+       sha256 = "05braj7m2z0r5vqq1y1sp6kh11b8z269lvznysmsqay31wccbyvx";
+       libraryHaskellDepends = [
+         aeson base bytestring containers data-default jsaddle
+       ];
+       description = "Interface for JavaScript that works with GHCJS and GHC";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "jsc" = callPackage
+    ({ mkDerivation, base, jmacro, lens, template-haskell, text
+     , transformers, webkitgtk3, webkitgtk3-javascriptcore
+     }:
+     mkDerivation {
+       pname = "jsc";
+       version = "0.1.1.1";
+       sha256 = "18mvpncvsfv4gv7lx00g8aixjmhzp0yklxaajx45v2hsx0azn8zc";
+       libraryHaskellDepends = [
+         base jmacro lens template-haskell text transformers webkitgtk3
+         webkitgtk3-javascriptcore
+       ];
+       description = "High level interface for webkit-javascriptcore";
+       license = stdenv.lib.licenses.mit;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
+  "jsmw" = callPackage
+    ({ mkDerivation, base, DOM, mtl, WebBits }:
+     mkDerivation {
+       pname = "jsmw";
+       version = "0.1";
+       sha256 = "1r36w2h5007qln56gnyyd7w6bcqiymn1jw287z0waf4fhpy02ygq";
+       libraryHaskellDepends = [ base DOM mtl WebBits ];
+       description = "Javascript Monadic Writer base package";
+       license = stdenv.lib.licenses.bsd3;
+       hydraPlatforms = stdenv.lib.platforms.none;
+     }) {};
+
   "json" = callPackage
     ({ mkDerivation, array, base, bytestring, containers, mtl, parsec
      , pretty, syb, text
@@ -29499,6 +30018,19 @@ self: {
        description = "Prettyprinter compatibility module for previous users of the wl-pprint package";
        license = stdenv.lib.licenses.bsd2;
      }) {};
+
+  "prim-uniq" = callPackage
+    ({ mkDerivation, base, dependent-sum, primitive }:
+     mkDerivation {
+       pname = "prim-uniq";
+       version = "0.1.0.1";
+       sha256 = "1zssi4zaihjaf3an10ar39d4qb155wcl1j66aymfrr9z2f2rf1gv";
+       libraryHaskellDepends = [ base dependent-sum primitive ];
+       homepage = "https://github.com/mokus0/prim-uniq";
+       description = "Opaque unique identifiers in primitive state monads";
+       license = stdenv.lib.licenses.publicDomain;
+     }) {};
+
   "primes" = callPackage
     ({ mkDerivation, base }:
      mkDerivation {
@@ -30803,6 +31335,17 @@ self: {
        description = "A type class for monads with references using functional dependencies";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+  "ref-tf" = callPackage
+    ({ mkDerivation, base, stm, transformers }:
+     mkDerivation {
+       pname = "ref-tf";
+       version = "0.4.0.1";
+       sha256 = "03mywifasfvxlz7hy5bbq3i8zi3i99k5cb0kq38gndx4vk2j5dgw";
+       libraryHaskellDepends = [ base stm transformers ];
+       description = "A type class for monads with references using type families";
+       license = stdenv.lib.licenses.bsd3;
+     }) {};
+
   "refact" = callPackage
     ({ mkDerivation, base }:
      mkDerivation {
@@ -42569,6 +43112,18 @@ self: {
        description = "Upload video to YouTube via YouTube API";
        license = stdenv.lib.licenses.bsd3;
      }) {};
+
+  "zenc" = callPackage
+    ({ mkDerivation, base }:
+     mkDerivation {
+       pname = "zenc";
+       version = "0.1.1";
+       sha256 = "0p0h7vz14k9v8gsnpkb9ca61i1k67vvsjg0bzy0ag4m20k94zlb2";
+       libraryHaskellDepends = [ base ];
+       description = "GHC style name Z-encoding and Z-decoding";
+       license = stdenv.lib.licenses.bsd3;
+     }) {};
+
   "zero" = callPackage
     ({ mkDerivation, base, semigroups }:
      mkDerivation {
@@ -42810,5 +43365,4 @@ self: {
        description = "Multi-file, colored, filtered log tailer";
        license = stdenv.lib.licenses.bsd3;
      }) {};
-
 }
