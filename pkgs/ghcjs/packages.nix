@@ -22389,7 +22389,7 @@ self: {
     ({ mkDerivation, aeson, attoparsec, base, base64-bytestring
      , bytestring, containers, deepseq, filepath, ghc-prim, http-types
      , lens, primitive, process, random, ref-tf, scientific, stm, text
-     , time, transformers, unordered-containers, vector
+     , time, transformers, unordered-containers, vector, ghcjs-base
      }:
      mkDerivation {
        pname = "jsaddle";
@@ -22399,7 +22399,7 @@ self: {
          aeson attoparsec base base64-bytestring bytestring containers
          deepseq filepath ghc-prim http-types lens primitive process random
          ref-tf scientific stm text time transformers unordered-containers
-         vector
+         vector ghcjs-base
        ];
        description = "Interface for JavaScript that works with GHCJS and GHC";
        license = stdenv.lib.licenses.mit;
