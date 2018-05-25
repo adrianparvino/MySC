@@ -40,6 +40,10 @@ nixpkgs: ghc: ghcjs:
           '';
         });
 
+        jsaddle = pkgs.haskell.lib.overrideCabal super.jsaddle (old: {
+          libraryHaskellDepends = old.libraryHaskellDepends ++ [ super.ghcjs-base ];
+        });
+
         bytestring-builder = pkgs.haskell.lib.dontHaddock super.bytestring-builder;
         nats = pkgs.haskell.lib.dontHaddock super.nats;
 
